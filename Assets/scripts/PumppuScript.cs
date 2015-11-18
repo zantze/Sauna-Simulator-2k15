@@ -2,53 +2,22 @@
 using System.Collections;
 
 public class PumppuScript : MonoBehaviour {
+	public GameObject tippa;
+	public Transform spawnPos;
 
-		public GameObject tippa;
-		public Transform spawnPos;
+    public float power = 0;
+    public float requiredPower = 100f;
 
-	public float curPumpPower,pumpMultiplier;
-	public float maxPower, minPower;
-	public float powerPerPump,multiplierPerPump,maxPowerMultiplierPump;
-	public float pumpDiminish,pumpMultiplierDiminish;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frameasdsadads
-	void Update () {
+	void Update() {
+        if (power >= requiredPower) {
+            Instantiate(tippa, spawnPos.position, Quaternion.identity);
+            power -= (requiredPower / 4f);
+        }
 
-		if (curPumpPower > maxPower){
-			Instantiate(tippa,spawnPos.position,Quaternion.identity);
-			curPumpPower = 1;
-		}
-		if (curPumpPower >= 0){
-			curPumpPower -= pumpDiminish;
-		}
-
-		else{
-			curPumpPower = 0;
-		}
-
-		if (multiplierPerPump >= 1){
-			multiplierPerPump -= pumpMultiplierDiminish;
-		}
-
-		else{
-			multiplierPerPump = 1;
-		}
-
-		if (multiplierPerPump >= maxPowerMultiplierPump)
-			multiplierPerPump = maxPowerMultiplierPump;
-	
+        power -= (2f * (power / requiredPower)) * Time.deltaTime;
 	}
 
 	public void onPumps() {
-		curPumpPower = curPumpPower + powerPerPump;
-		multiplierPerPump += pumpMultiplier;
-
-		curPumpPower = curPumpPower * multiplierPerPump;
-
-
+        power += 1f + (power / requiredPower);
 	}
 }
