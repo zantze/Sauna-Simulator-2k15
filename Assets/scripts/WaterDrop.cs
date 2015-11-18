@@ -17,7 +17,7 @@ public class WaterDrop : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision){
 		if (collision.gameObject.CompareTag("Kiuas")){
-		    Instantiate(watersound,transform.position,Quaternion.identity);
+		    Instantiate(watersound, transform.position, Quaternion.identity);
 			collision.gameObject.GetComponent<KiuasSaunaConnection>().addTemp();
 		}
 

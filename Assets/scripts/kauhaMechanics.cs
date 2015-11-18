@@ -16,7 +16,7 @@ public class kauhaMechanics : MonoBehaviour {
 	bool throwWater = false;
 	bool released = false;
 
-	public float maxCharge,curCharge,loadSpeed,rotReduce;
+	public float maxCharge, curCharge, loadSpeed, rotReduce;
 
 	// LOLLOTdasddddasdsas
 	void Start () {
