@@ -17,7 +17,7 @@ public class kauhaMechanics : MonoBehaviour {
 
 	public float maxCharge, curCharge, loadSpeed, rotReduce;
 
-	// LOLLOTdasddddasdsas
+	// LOLLOTdasddddasddsadsasas
 	void Start () {
 		defaultRot = transform.rotation;
 	}
@@ -28,7 +28,7 @@ public class kauhaMechanics : MonoBehaviour {
 		    if (curCharge < maxCharge){
 					curCharge += loadSpeed * Time.deltaTime;
 
-				transform.Rotate(loadSpeed / rotReduce, 0, 0);
+				transform.Rotate(loadSpeed * rotReduce * Time.deltaTime, 0, 0);
 				throwWater = true;
 			}
 		}
