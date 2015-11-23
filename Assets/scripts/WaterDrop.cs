@@ -16,14 +16,11 @@ public class WaterDrop : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		if (collision.gameObject.CompareTag("Kiuas")){
-		    Instantiate(watersound, transform.position, Quaternion.identity);
-			collision.gameObject.GetComponent<KiuasSaunaConnection>().addTemp();
-		}
+		if (collision.gameObject.CompareTag("Kiuas"))
+			collision.gameObject.GetComponent<Kiuas>().throwWater();
+		else if (collision.gameObject.GetComponent<BucketScript>() != null)
+			collision.gameObject.GetComponent<BucketScript>().addTippa(1);
 
-		else if (collision.gameObject.GetComponent<BucketScript>() != null){
-			collision.gameObject.GetComponent<BucketScript>().addTippa (1);
-		}
 		Destroy(gameObject);
 	}
 }
